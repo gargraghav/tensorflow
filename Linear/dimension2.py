@@ -18,7 +18,7 @@ B= tf.ones((1,2), dtype=tf.float32)
 para = tf.matmul(B,tf.matrix_inverse(X))
 
 with tf.Session() as sess:
-    A=sess.run(para)
+    A=sess.run()
 
 b = 1 / A[0][1]
 a = -b * A[0][0]
