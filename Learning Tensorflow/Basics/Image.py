@@ -3,7 +3,7 @@ import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from os.path import dirname, realpath, join
 
-dir=join(dirname(realpath(dirname(__file__))),'Images')
+dir=join(dirname(realpath(dirname(realpath(dirname(__file__))))),'Images')
 filename=dir + "/MarshOrchid.jpg"
 img_data=mpimg.imread(filename)
 
