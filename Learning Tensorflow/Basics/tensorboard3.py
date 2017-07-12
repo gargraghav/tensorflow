@@ -15,6 +15,6 @@ g = tf.add(b, d,  name="g")
 h = tf.multiply(g, f, name="h")
 
 with tf.Session() as sess:
-    writer=tf.summary.FileWriter("/home/raghav/PycharmProjects/tensorflow/tensorboard/output3",sess.graph)
+    writer=tf.summary.FileWriter("/home/raghav/PycharmProjects/tensorflow/tensorboard/",sess.graph)
     print(sess.run(h))
     writer.close()

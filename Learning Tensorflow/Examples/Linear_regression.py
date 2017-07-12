@@ -1,11 +1,14 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import style
+
+style.use('ggplot')
 
 W=tf.Variable(np.random.randn(),)
 b=tf.Variable(np.random.randn(),)
 x=tf.placeholder(tf.float32)
-linear_model=W*x+b;
+linear_model=W*x+b
 
 init=tf.global_variables_initializer()
 
@@ -19,6 +22,7 @@ loss=tf.reduce_sum(sq_deltas)
 
 optimizer=tf.train.GradientDescentOptimizer(0.01)
 train=optimizer.minimize(loss)
+
 x_train=np.asarray([3.3,4.4,5.5,6.71,6.93,4.168,9.779,6.182,7.59,2.167,
 7.042,10.791,5.313,7.997,5.654,9.27,3.1])
 y_train=np.asarray([1.7,2.76,2.09,3.19,1.694,1.573,3.366,2.596,2.53,1.221,
