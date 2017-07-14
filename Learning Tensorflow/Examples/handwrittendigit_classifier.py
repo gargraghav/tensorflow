@@ -34,9 +34,9 @@ merged_summary_op = tf.summary.merge_all()
 
 with tf.Session() as sess:
     sess.run(init)
-    summary_writer = tf.summary.FileWriter("/home/raghav/PycharmProjects/tensorflow/tensorboard/output6", sess.graph)
+    summary_writer = tf.summary.FileWriter("/home/raghav/PycharmProjects/tensorflow/tensorboard/", sess.graph)
 
-    for itr in range(training_iterations)
+    for itr in range(training_iterations):
         avg_cost = 0.
         total_batch = int(mnist.train.num_examples / batch_size)
         for i in range(total_batch):
