@@ -36,7 +36,7 @@ with tf.Session() as sess:
     sess.run(init)
     summary_writer = tf.summary.FileWriter("/home/raghav/PycharmProjects/tensorflow/tensorboard/output6", sess.graph)
 
-    for itr in range(training_iterations):
+    for itr in range(training_iterations)
         avg_cost = 0.
         total_batch = int(mnist.train.num_examples / batch_size)
         for i in range(total_batch):
@@ -45,8 +45,8 @@ with tf.Session() as sess:
             avg_cost += sess.run(cost_function, feed_dict={x: batch_xs, y: batch_ys})/total_batch
             summary_str = sess.run(merged_summary_op, feed_dict={x: batch_xs, y: batch_ys})
             summary_writer.add_summary(summary_str, total_batch + i)
-        if itr % display_step == 0:
-            print("Iteration:", '%d' % (itr + 1), "cost=", "{:.9f}".format(avg_cost))
+        #if itr % display_step == 0:
+            #print("Iteration:", '%d' % (itr + 1), "cost=", "{:.9f}".format(avg_cost))
 
     print("Tuning Completed!")
 
