@@ -1,7 +1,9 @@
 import tensorflow as tf
-import numpy as np
+import time
 from tensorflow.examples.tutorials.mnist import input_data
+import matplotlib.pyplot as plt
 
+beginTime=time.time()
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
 learning_rate = 0.01
@@ -45,12 +47,36 @@ with tf.Session() as sess:
             avg_cost += sess.run(cost_function, feed_dict={x: batch_xs, y: batch_ys})/total_batch
             summary_str = sess.run(merged_summary_op, feed_dict={x: batch_xs, y: batch_ys})
             summary_writer.add_summary(summary_str, total_batch + i)
-        #if itr % display_step == 0:
-            #print("Iteration:", '%d' % (itr + 1), "cost=", "{:.9f}".format(avg_cost))
+        if itr % display_step == 0:
+            print("Iteration:", '%d' % (itr + 1), "cost=", "{:.9f}".format(avg_cost))
 
-    print("Tuning Completed!")
+    print("Training Completed!")
 
     predictions = tf.equal(tf.argmax(model, 1), tf.argmax(y, 1))
     accuracy = tf.reduce_mean(tf.cast(predictions, "float"))
 
-    print("Accuracy: ",sess.run(accuracy, feed_dict={x: mnist.test.images, y: mnist.test.labels}))
+    print("\nAccuracy: ",sess.run(accuracy, feed_dict={x: mnist.test.images, y: mnist.test.labels})*100)
+    endTime = time.time()
+    print('\nTotal time: {:5.2f}s'.format(endTime - beginTime))
+
+    f, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2)
+
+    test1_index = 0
+    test1_x = mnist.test.images[test1_index].reshape(1, 784)
+    test1_img = mnist.test.images[test1_index].reshape((28, 28))
+    test1_y = mnist.test.labels[test1_index].reshape(1, 10)
+    test1_pred = sess.run(model, feed_dict={x: test1_x, y: test1_y})
+
+    ax1.imshow(test1_img, cmap='gray')
+    ax2.bar(list(range(0, 10)), test1_pred[0])
+
+    test2_index = 6
+    test2_x = mnist.test.images[test2_index].reshape(1, 784)
+    test2_img = mnist.test.images[test2_index].reshape((28, 28))
+    test2_y = mnist.test.labels[test2_index].reshape(1, 10)
+    test2_pred = sess.run(model, feed_dict={x: test2_x, y: test2_y})
+
+    ax3.imshow(test2_img, cmap='gray')
+    ax4.bar(list(range(0, 10)), test2_pred[0])
+
+    plt.show()
