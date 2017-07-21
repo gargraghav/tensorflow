@@ -1,10 +1,8 @@
 <div align="center">
   <img src="https://github.com/gargraghav/tensorflow/blob/master/Images/TF_logo.JPG"><br>
-
-TensorFlow is an open source software library developed by Google Brain Team for numerical computations using data flow graphs. It helps to design, build and train deep learning models.
-
-This repository may help you understand TensorFlow better and in an easy way.
 </div>
+TensorFlow is an open source software library developed by Google Brain Team for numerical computations using data flow graphs. It helps to design, build and train deep learning models. This repository may help you understand TensorFlow better and in an easy way.
+
 
 ## Pre-requisites
 * [Python Programming](https://www.codecademy.com/learn/python)
